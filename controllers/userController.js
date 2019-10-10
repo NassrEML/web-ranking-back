@@ -86,7 +86,6 @@ function getUsersByNameSurname(req, res) {
 function updateUser(req, res) {
 
     const { _id } = req.params;
-
     Users.findOneAndUpdate(
         _id,
         req.body,
@@ -94,20 +93,20 @@ function updateUser(req, res) {
             new: true,
             useFindAndModify: false,
             runValidators: true
-        }
-    )
-        .then(updatedUser => {
-            res.status(200).json({
+        },
+        function (err, updatedUser) {
+            if (err) {
+                return res.status(400).json({
+                    message: "Ha ocurrido un error al actualizar el Usuario",
+                    err: error
+                })
+            }
+            return res.status(200).json({
                 message: "Usuario Modificado",
                 res: updatedUser
             })
-        })
-        .catch(error => {
-            res.status(404).json({
-                message: "Ha ocurrido un error al actualizar el Usuario",
-                error: error
-            })
-        })
+        }
+    )
 }
 
 async function createUser(req, res) {
