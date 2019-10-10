@@ -19,7 +19,7 @@ var options = {
 
 var bodyParser = require('body-parser');
 
-app.use(bodyParser.raw(options));
+server.use(bodyParser.raw(options));
 
 server.use(express.json());
 server.use(cors());
