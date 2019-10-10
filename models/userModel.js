@@ -109,6 +109,7 @@ const userSchema = new mongoose.Schema({
     },
     "list_of_regattas": [
         {
+            "regatta_title": String,
             "category": String,
             "club": String,
             "net_points": String,
