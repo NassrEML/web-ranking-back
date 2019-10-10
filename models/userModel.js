@@ -107,9 +107,16 @@ const userSchema = new mongoose.Schema({
     "status": {
         type: String
     },
-    "list_of_regattas": {
-        type: Array
-    }
+    "list_of_regattas": [
+        {
+            "category": String,
+            "club": String,
+            "net_points": String,
+            "position": String,
+            "total_points": String,
+            "vela": String
+        }
+    ]
 });
 
 
